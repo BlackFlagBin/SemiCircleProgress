@@ -1,5 +1,15 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'blackflagbin' //bintray注册的用户名
+    groupId = 'com.blackflagbin' //compile引用时的第1部分groupId
+    artifactId = 'semicircleprogressview' //compile引用时的第2部分项目名
+    publishVersion = '0.0.1' //compile引用时的第3部分版本号
+    desc = '使用Kotlin编写的半圆形进度条'
+    website = 'https://github.com/BlackFlagBin/SemiCircleProgress/tree/master'
+}
 
 android {
     compileSdkVersion 26
@@ -32,7 +42,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 repositories {
     mavenCentral()
