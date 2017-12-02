@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         app:angle="3"
-        app:progress="100"
+        app:progress="13"
         app:strokeWidth="3"/>
 
 </RelativeLayout>
