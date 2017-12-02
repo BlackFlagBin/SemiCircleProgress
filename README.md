@@ -1,6 +1,6 @@
 # SemiCircleProgress
  使用Kotlin编写的半圆形的进度条
- ![效果图](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512195602441&di=5b894f44fe06f26c4dc2cfadd9b99d4b&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F014a52554064690000005b03d35d4e.jpg%40900w_1l_2o_100sh.jpg)
+ ![效果图](https://github.com/BlackFlagBin/SemiCircleProgress/blob/master/screenshot.gif?raw=true)
 
 * 导入依赖
 ```
