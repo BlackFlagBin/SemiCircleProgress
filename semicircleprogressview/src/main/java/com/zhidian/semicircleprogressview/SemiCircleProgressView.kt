@@ -14,12 +14,17 @@ import android.view.View
  */
 class SemiCircleProgressView : View, IProgressView {
     private var mProgress: Float = 0f
+    //默认宽度 200dp
     private var mDefaultWidth = dp2px(200f)
+    //默认高度 100dp
     private var mDefaultHeight = dp2px(100f)
+    //默认进度短线间隔角度 1度
     private var mAngle = 1
+    //默认进度短线宽度 1dp
     private var mLineStrokeWidth = 1
     private var mCenterX = 0f
     private var mCenterY = 0f
+    //圆环宽度
     private var mRingWidth = 0f
     private var mLinePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var mRingPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -36,11 +41,16 @@ class SemiCircleProgressView : View, IProgressView {
         invalidate()
     }
 
+
     override fun getProgress(): Float {
         return mProgress
     }
 
-    fun updateProgress(progress: Float, duration: Long = Math.abs((progress-mProgress).toInt())*30L) {
+    /**
+     *  更新进度
+     */
+    fun updateProgress(
+            progress: Float, duration: Long = Math.abs((progress - mProgress).toInt()) * 30L) {
         ObjectAnimator.ofFloat(this, "progress", progress).setDuration(duration).start()
     }
 
