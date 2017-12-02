@@ -1,4 +1,4 @@
-package com.zhidian.semicircleprogressview
+package com.blackflagbin.semicircleprogressview
 
 /**
  * Created by blackflagbin on 2017/11/30.
