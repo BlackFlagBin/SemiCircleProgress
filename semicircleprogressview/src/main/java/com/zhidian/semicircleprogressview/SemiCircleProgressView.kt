@@ -1,5 +1,6 @@
 package com.zhidian.semicircleprogressview
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -32,10 +33,15 @@ class SemiCircleProgressView : View, IProgressView {
     private var mHexGreenString = ""
     override fun setProgress(progress: Float) {
         mProgress = progress
+        invalidate()
     }
 
     override fun getProgress(): Float {
         return mProgress
+    }
+
+    fun updateProgress(progress: Float, duration: Long = Math.abs((progress-mProgress).toInt())*30L) {
+        ObjectAnimator.ofFloat(this, "progress", progress).setDuration(duration).start()
     }
 
     constructor(context: Context) : this(context, null)
@@ -68,7 +74,7 @@ class SemiCircleProgressView : View, IProgressView {
         var height = measureHandler(heightMeasureSpec, mDefaultHeight.toInt())
 
         when {
-            widthMode != MeasureSpec.UNSPECIFIED && heightMode != MeasureSpec.UNSPECIFIED -> {
+            widthMode == MeasureSpec.EXACTLY && heightMode == MeasureSpec.EXACTLY -> {
                 if (width > height * 2) {
                     width = height * 2
                 } else {
@@ -76,11 +82,11 @@ class SemiCircleProgressView : View, IProgressView {
                 }
             }
 
-            widthMode != MeasureSpec.UNSPECIFIED && heightMode == MeasureSpec.UNSPECIFIED -> {
+            widthMode == MeasureSpec.EXACTLY && heightMode != MeasureSpec.EXACTLY -> {
                 height = width / 2
             }
 
-            widthMode == MeasureSpec.UNSPECIFIED && heightMode != MeasureSpec.UNSPECIFIED -> {
+            widthMode != MeasureSpec.EXACTLY && heightMode == MeasureSpec.EXACTLY -> {
                 width = height * 2
             }
 

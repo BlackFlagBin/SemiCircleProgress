@@ -9,8 +9,10 @@
     tools:context="com.zhidian.myapplication.MainActivity">
 
     <com.zhidian.semicircleprogressview.SemiCircleProgressView
+        android:id="@+id/progress"
         android:layout_width="300dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         app:progress="100"
         app:angle="3"
         app:strokeWidth="3"/>
