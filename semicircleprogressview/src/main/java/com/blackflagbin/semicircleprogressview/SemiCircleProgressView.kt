@@ -203,8 +203,6 @@ class SemiCircleProgressView : View, IProgressView {
                 mHexGreenString = "0$mHexGreenString"
             }
 
-            println("#ff$mHexRedString$mHexGreenString$mHexBlueString")
-
             mLinePaint.color = Color.parseColor("#ff$mHexRedString$mHexGreenString$mHexBlueString")
             canvas.drawLine(
                     -mRingWidth * 4 - dp2px(6f), 0f, -mRingWidth * 5 + dp2px(6f), 0f, mLinePaint)
