@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.zhidian.myapplication"
+        applicationId "com.blackflagbin.myapplication"
         minSdkVersion 18
         targetSdkVersion 26
         versionCode 1

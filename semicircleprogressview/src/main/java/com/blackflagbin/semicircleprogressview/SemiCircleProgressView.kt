@@ -8,7 +8,6 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
 import android.view.View
-import com.zhidian.semicircleprogressview.R
 
 /**
  * Created by blackflagbin on 2017/11/30.
@@ -58,8 +57,8 @@ class SemiCircleProgressView : View, IProgressView {
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
 
-        val attrSet = context.obtainStyledAttributes(attrs,
-                R.styleable.SemiCircleProgressView)
+        val attrSet = context.obtainStyledAttributes(
+                attrs, R.styleable.SemiCircleProgressView)
         with(attrSet) {
             mProgress = attrSet.getFloat(
                     R.styleable.SemiCircleProgressView_progress, 0f)
