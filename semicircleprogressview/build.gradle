@@ -6,7 +6,7 @@ publish {
     userOrg = 'blackflagbin' //bintray注册的用户名
     groupId = 'com.blackflagbin' //compile引用时的第1部分groupId
     artifactId = 'semicircleprogressview' //compile引用时的第2部分项目名
-    publishVersion = '0.0.2' //compile引用时的第3部分版本号
+    publishVersion = '0.0.3' //compile引用时的第3部分版本号
     desc = '使用Kotlin编写的半圆形进度条'
     website = 'https://github.com/BlackFlagBin/SemiCircleProgress/tree/master'
 }
