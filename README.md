@@ -1,5 +1,6 @@
 # SemiCircleProgress
 * 使用Kotlin编写的半圆形的进度条，效果如下
+[![Twitter](https://img.shields.io/twitter/url/https/img.shields.io/badge/Gradle-0.0.3-red.svg.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fimg.shields.io%2Fbadge%2FGradle-0.0.3-red.svg)
  
  ![效果图](https://github.com/BlackFlagBin/SemiCircleProgress/blob/master/screenshot.gif?raw=true)
 
