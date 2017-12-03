@@ -12,8 +12,8 @@ import android.view.View
 /**
  * Created by blackflagbin on 2017/11/30.
  */
-class SemiCircleProgressView : View, IProgressView {
-    private var mProgress: Float = 0f
+open class SemiCircleProgressView : View, IProgressView {
+    private var mProgress: Int = 0
     //默认宽度 200dp
     private var mDefaultWidth = dp2px(200f)
     //默认高度 100dp
@@ -22,6 +22,7 @@ class SemiCircleProgressView : View, IProgressView {
     private var mAngle = 1
     //默认进度短线宽度 1dp
     private var mLineStrokeWidth = 1
+    private var mShowProgressText = true
     private var mCenterX = 0f
     private var mCenterY = 0f
     //圆环宽度
@@ -29,6 +30,7 @@ class SemiCircleProgressView : View, IProgressView {
     private var mLinePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var mRingPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var mCirclePaint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private var mProgressTextPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var mPath = Path()
     private var mRed = 255
     private var mBlue = 255
@@ -36,13 +38,15 @@ class SemiCircleProgressView : View, IProgressView {
     private var mHexRedString = ""
     private var mHexBlueString = ""
     private var mHexGreenString = ""
-    override fun setProgress(progress: Float) {
+    private var mWidth = mDefaultWidth
+    private var mHeight = mDefaultHeight
+    override fun setProgress(progress: Int) {
         mProgress = progress
         invalidate()
     }
 
 
-    override fun getProgress(): Float {
+    override fun getProgress(): Int {
         return mProgress
     }
 
@@ -50,8 +54,8 @@ class SemiCircleProgressView : View, IProgressView {
      *  更新进度
      */
     fun updateProgress(
-            progress: Float, duration: Long = Math.abs((progress - mProgress).toInt()) * 30L) {
-        ObjectAnimator.ofFloat(this, "progress", progress).setDuration(duration).start()
+            progress: Int, duration: Long = Math.abs((progress - mProgress).toInt()) * 30L) {
+        ObjectAnimator.ofInt(this, "progress", progress).setDuration(duration).start()
     }
 
     constructor(context: Context) : this(context, null)
@@ -60,12 +64,14 @@ class SemiCircleProgressView : View, IProgressView {
         val attrSet = context.obtainStyledAttributes(
                 attrs, R.styleable.SemiCircleProgressView)
         with(attrSet) {
-            mProgress = attrSet.getFloat(
-                    R.styleable.SemiCircleProgressView_progress, 0f)
+            mProgress = attrSet.getInt(
+                    R.styleable.SemiCircleProgressView_progress, 0)
             mAngle = attrSet.getInt(
                     R.styleable.SemiCircleProgressView_angle, 0)
             mLineStrokeWidth = attrSet.getInt(
                     R.styleable.SemiCircleProgressView_strokeWidth, 0)
+            mShowProgressText = attrSet.getBoolean(
+                    R.styleable.SemiCircleProgressView_showProgressText, true)
         }
 
         mLinePaint.color = Color.BLACK
@@ -111,12 +117,13 @@ class SemiCircleProgressView : View, IProgressView {
             height = width / 2
         }
 
-
+        mWidth = width.toFloat()
+        mHeight = height.toFloat()
 
         mCenterX = width / 2f
         mCenterY = height.toFloat()
         mRingWidth = width / 10f
-
+        mProgressTextPaint.textSize = (width / 7).toFloat()
         setMeasuredDimension(
                 MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
                 MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY))
@@ -145,7 +152,7 @@ class SemiCircleProgressView : View, IProgressView {
             #3EE89A rgb(62,232,154)
          */
         var count = 180 / mAngle / 3
-        for (i in 1 until (mProgress / 100 * 180 / mAngle).toInt()) {
+        for (i in 1 until (mProgress / 100f * 180 / mAngle).toInt()) {
             canvas.save()
             canvas.rotate(i * mAngle.toFloat(), 0f, 0f)
 
@@ -210,7 +217,15 @@ class SemiCircleProgressView : View, IProgressView {
 
         }
 
+        if (mShowProgressText) {
+            drawProgressText(canvas)
+        }
+
         canvas.restore()
+    }
+
+    open fun drawProgressText(canvas: Canvas): Unit {
+        canvas.drawText("$mProgress%", -mWidth / 7, -dp2px(5f), mProgressTextPaint)
     }
 
     private fun dp2px(dpValue: Float): Float {

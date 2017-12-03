@@ -9,10 +9,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         bt_start.setOnClickListener {
             if (et_progress.text.toString().isNotEmpty()) {
-                progress.updateProgress(et_progress.text.toString().toFloat())
+                progress.updateProgress(et_progress.text.toString().toInt())
             }
         }
     }

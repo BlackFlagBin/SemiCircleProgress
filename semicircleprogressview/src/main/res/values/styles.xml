@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SemiCircleProgressView">
-        <attr name="progress" format="float"/>
+        <attr name="progress" format="integer"/>
         <attr name="angle" format="integer"/>
         <attr name="strokeWidth" format="integer"/>
+        <attr name="showProgressText" format="boolean"/>
     </declare-styleable>
 </resources>
