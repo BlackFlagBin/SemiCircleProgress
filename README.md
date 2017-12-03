@@ -1,8 +1,8 @@
 # SemiCircleProgress
-![版本](https://img.shields.io/twitter/url/https/img.shields.io/badge/Gradle-0.0.3-red.svg.svg?style=social)
+![版本](https://img.shields.io/badge/Gradle-0.0.3-red.svg)
 * 使用Kotlin编写的半圆形的进度条，效果如下
  
- ![效果图](https://github.com/BlackFlagBin/SemiCircleProgress/blob/master/screenshot.gif?raw=true)
+![效果图](https://github.com/BlackFlagBin/SemiCircleProgress/blob/master/screenshot.gif?raw=true)
 
 * 导入依赖
 ```
