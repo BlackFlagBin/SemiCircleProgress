@@ -1,5 +1,5 @@
 # SemiCircleProgress
- *使用Kotlin编写的半圆形的进度条，效果如下
+* 使用Kotlin编写的半圆形的进度条，效果如下
  
  ![效果图](https://github.com/BlackFlagBin/SemiCircleProgress/blob/master/screenshot.gif?raw=true)
 
