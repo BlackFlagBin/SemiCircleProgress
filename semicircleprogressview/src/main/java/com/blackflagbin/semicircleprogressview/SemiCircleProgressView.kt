@@ -83,6 +83,7 @@ open class SemiCircleProgressView : View, IProgressView {
         mCirclePaint.setShadowLayer(dp2px(4f), 0f, 0f, Color.parseColor("#F9F9F9"))
         mCirclePaint.style = Paint.Style.STROKE
         mCirclePaint.strokeWidth = dp2px(1f)
+        mProgressTextPaint.textAlign = Paint.Align.CENTER
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -218,14 +219,14 @@ open class SemiCircleProgressView : View, IProgressView {
         }
 
         if (mShowProgressText) {
-            drawProgressText(canvas)
+            drawProgressText(canvas,mHeight)
         }
 
         canvas.restore()
     }
 
-    open fun drawProgressText(canvas: Canvas): Unit {
-        canvas.drawText("$mProgress%", -mWidth / 7, -dp2px(5f), mProgressTextPaint)
+    open fun drawProgressText(canvas: Canvas,height:Float): Unit {
+        canvas.drawText("$mProgress%", 0f, -dp2px(5f), mProgressTextPaint)
     }
 
     private fun dp2px(dpValue: Float): Float {

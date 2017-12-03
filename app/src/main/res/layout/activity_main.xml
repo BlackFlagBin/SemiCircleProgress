@@ -10,11 +10,24 @@
         android:id="@+id/progress"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         app:angle="3"
         app:progress="13"
-        app:strokeWidth="3"
-        app:showProgressText="false"/>
+        app:showProgressText="true"
+        app:strokeWidth="3"/>
+
+    <com.blackflagbin.semicircleprogressview.MySemiCircleProgressView
+        android:id="@+id/custom_progress"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        app:angle="3"
+        app:progress="13"
+        app:showProgressText="true"
+        app:strokeWidth="3"/>
 
 
     <android.support.v7.widget.AppCompatButton
