@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.AnticipateOvershootInterpolator
 
 /**
  * Created by blackflagbin on 2017/11/30.
@@ -55,7 +56,9 @@ open class SemiCircleProgressView : View, IProgressView {
      */
     fun updateProgress(
             progress: Int, duration: Long = Math.abs((progress - mProgress).toInt()) * 30L) {
-        ObjectAnimator.ofInt(this, "progress", progress).setDuration(duration).start()
+        val animator = ObjectAnimator.ofInt(this, "progress", progress).setDuration(duration)
+        animator.interpolator=AnticipateOvershootInterpolator()
+        animator.start()
     }
 
     constructor(context: Context) : this(context, null)
@@ -219,13 +222,13 @@ open class SemiCircleProgressView : View, IProgressView {
         }
 
         if (mShowProgressText) {
-            drawProgressText(canvas,mHeight)
+            drawProgressText(canvas, mHeight)
         }
 
         canvas.restore()
     }
 
-    open fun drawProgressText(canvas: Canvas,height:Float): Unit {
+    open fun drawProgressText(canvas: Canvas, height: Float): Unit {
         canvas.drawText("$mProgress%", 0f, -dp2px(5f), mProgressTextPaint)
     }
 
